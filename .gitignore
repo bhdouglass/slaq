@@ -1,3 +1,5 @@
 slaq.pro.user
 .qmake.conf
 localconfig.pri
+build
+.clickable

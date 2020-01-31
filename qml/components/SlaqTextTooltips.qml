@@ -1,4 +1,4 @@
-import QtQuick 2.11
+import QtQuick 2.7
 import SlackComponents 1.0
 import ".."
 

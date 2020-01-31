@@ -27,17 +27,17 @@ class SlackText : public QQuickLabel
     Q_PROPERTY(qreal emojiWidth READ emojiWidth WRITE setEmojiWidth NOTIFY emojiWidthChanged)
     Q_PROPERTY(qreal emojiHeight READ emojiHeight WRITE setEmojiHeight NOTIFY emojiHeightChanged)
 
-    Q_PROPERTY(qreal padding READ padding WRITE setPadding RESET resetPadding NOTIFY paddingChanged)
-    Q_PROPERTY(qreal topPadding READ topPadding WRITE setTopPadding RESET resetTopPadding NOTIFY topPaddingChanged)
-    Q_PROPERTY(qreal leftPadding READ leftPadding WRITE setLeftPadding RESET resetLeftPadding NOTIFY leftPaddingChanged)
-    Q_PROPERTY(qreal rightPadding READ rightPadding WRITE setRightPadding RESET resetRightPadding NOTIFY rightPaddingChanged)
-    Q_PROPERTY(qreal bottomPadding READ bottomPadding WRITE setBottomPadding RESET resetBottomPadding NOTIFY bottomPaddingChanged)
+    //Q_PROPERTY(qreal padding READ padding WRITE setPadding RESET resetPadding NOTIFY paddingChanged)
+    //Q_PROPERTY(qreal topPadding READ topPadding WRITE setTopPadding RESET resetTopPadding NOTIFY topPaddingChanged)
+    //Q_PROPERTY(qreal leftPadding READ leftPadding WRITE setLeftPadding RESET resetLeftPadding NOTIFY leftPaddingChanged)
+    //Q_PROPERTY(qreal rightPadding READ rightPadding WRITE setRightPadding RESET resetRightPadding NOTIFY rightPaddingChanged)
+    //Q_PROPERTY(qreal bottomPadding READ bottomPadding WRITE setBottomPadding RESET resetBottomPadding NOTIFY bottomPaddingChanged)
 
     Q_PROPERTY(QString hoveredLink READ hoveredLink NOTIFY linkHovered)
     Q_PROPERTY(QString hoveredImage READ hoveredImage NOTIFY imageHovered)
 
-    Q_PROPERTY(QJSValue fontInfo READ fontInfo NOTIFY fontInfoChanged)
-    Q_PROPERTY(QSizeF advance READ advance NOTIFY contentSizeChanged)
+    //Q_PROPERTY(QJSValue fontInfo READ fontInfo NOTIFY fontInfoChanged)
+    //Q_PROPERTY(QSizeF advance READ advance NOTIFY contentSizeChanged)
     Q_PROPERTY(ChatsModel* chat READ chat WRITE setChat NOTIFY chatChanged)
     Q_PROPERTY(QQuickItem* itemFocusOnUnselect READ itemFocusOnUnselect WRITE setItemFocusOnUnselect NOTIFY itemFocusOnUnselectChanged)
 

@@ -1,6 +1,6 @@
-import QtQuick 2.11
+import QtQuick 2.7
 import QtQuick.Window 2.3
-import QtQuick.Controls 2.4
+import QtQuick.Controls 2.2
 import "../pages"
 import ".."
 

@@ -1,0 +1,15 @@
+{
+    "name": "slaq.bhdouglass",
+    "description": "Unoffical Slack client that doesn't eat all your RAM",
+    "architecture": "@CLICK_ARCH@",
+    "title": "Slaq",
+    "hooks": {
+        "slaq": {
+            "apparmor": "slaq.apparmor",
+            "desktop":  "slaq.desktop"
+        }
+    },
+    "version": "0.0.1",
+    "maintainer": "Brian Douglass <bhdouglass@gmail.com>",
+    "framework" : "ubuntu-sdk-16.04"
+}

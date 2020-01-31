@@ -338,8 +338,8 @@ void SlackText::componentComplete()
 
     QQuickLabel::setRenderType(QtRendering);
     QQuickLabel::setTextFormat(RichText);
-    QQuickLabel::setColor(palette().windowText().color());
-    QQuickLabel::setLinkColor(palette().link().color());
+    QQuickLabel::setColor(QGuiApplication::palette().windowText().color());
+    QQuickLabel::setLinkColor(QGuiApplication::palette().link().color());
     QQuickLabel::componentComplete();
     postProcessText();
     // TODO: code highlight?

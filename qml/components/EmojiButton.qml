@@ -1,11 +1,11 @@
-import QtQuick 2.11
-import QtQuick.Controls 2.4
+import QtQuick 2.7
+import QtQuick.Controls 2.2
 
 Button {
     id: emojiButton
     leftPadding: 0
     rightPadding: 0
-    display: AbstractButton.TextOnly
+    //display: AbstractButton.TextOnly
     contentItem: Label {
         text: emojiButton.text
         font.family: "Twitter Color Emoji"

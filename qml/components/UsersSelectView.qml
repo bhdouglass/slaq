@@ -1,6 +1,6 @@
-import QtQuick 2.11
-import QtQuick.Controls 2.4
-import QtQuick.Controls.Material 2.4
+import QtQuick 2.7
+import QtQuick.Controls 2.2
+import QtQuick.Controls.Material 2.2
 import QtQuick.Layouts 1.3
 import com.iskrembilen 1.0
 import SortFilterProxyModel 0.2
@@ -141,8 +141,8 @@ ColumnLayout {
 
             spacing: Theme.paddingMedium
             padding: delegate.height/2 + Theme.paddingMedium
-            icon.color: "transparent"
-            icon.source: "image://emoji/slack/" + UserObject.avatarUrl
+            //icon.color: "transparent"
+            //icon.source: "image://emoji/slack/" + UserObject.avatarUrl
             width: usersListView.width
             Image {
                 id: image

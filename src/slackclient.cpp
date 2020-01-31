@@ -274,18 +274,18 @@ void SlackTeamClient::handleStreamMessage(const QJsonObject& message)
                         userName(message.value(QStringLiteral("user")).toString()));
     } else if (type == QStringLiteral("user_change")) {
         // invoke on the main thread
-        QMetaObject::invokeMethod(qApp, [this, message] {
+        //QMetaObject::invokeMethod(qApp, [this, message] {
             if (m_teamInfo.users() != nullptr) {
                 m_teamInfo.users()->updateUser(message.value(QStringLiteral("user")).toObject());
             }
-        }, Qt::QueuedConnection);
+        //}, Qt::QueuedConnection);
     } else if (type == QStringLiteral("team_join")) {
         // invoke on the main thread
-        QMetaObject::invokeMethod(qApp, [this, message] {
+        //QMetaObject::invokeMethod(qApp, [this, message] {
             if (m_teamInfo.users() != nullptr) {
                 m_teamInfo.users()->addUser(message.value(QStringLiteral("user")).toObject());
             }
-        });
+        //});
     } else if (type == QStringLiteral("member_joined_channel")) {
         QStringList _members(message.value(QStringLiteral("user")).toString());
         qDebug() << "user joined to channel" << _members;
@@ -316,11 +316,11 @@ void SlackTeamClient::handleStreamMessage(const QJsonObject& message)
         requestSharedFileInfo(fileId);
     } else if (type == "file_deleted") {
         const QString& fileId = message.value(QStringLiteral("file_id")).toString();
-        QMetaObject::invokeMethod(qApp, [this, fileId] {
+        //QMetaObject::invokeMethod(qApp, [this, fileId] {
             if (m_teamInfo.fileSharesModel() != nullptr) {
                 m_teamInfo.fileSharesModel()->deleteFile(fileId);
             }
-        });
+        //});
     } else if (type == "file_change") {
         const QString& fileId = message.value(QStringLiteral("file_id")).toString();
         requestSharedFileInfo(fileId);
@@ -1217,21 +1217,21 @@ void SlackTeamClient::requestTeamEmojis()
 void SlackTeamClient::requestPresence(const QString &userId)
 {
     //qDebug() << "presence request to" << userId;
-    QMetaObject::invokeMethod(this, [this, userId] {
+    //QMetaObject::invokeMethod(this, [this, userId] {
         QMutexLocker lock(&m_presenceRequestMutex);
         m_presenceRequestIds.append(userId);
         m_presenceRequestTimer.start(1000);
-    }, Qt::QueuedConnection);
+    //}, Qt::QueuedConnection);
 }
 
 void SlackTeamClient::requestPresence(const QStringList &userIds)
 {
     //qDebug() << "presence request to" << userIds;
-    QMetaObject::invokeMethod(this, [this, userIds] {
+    //QMetaObject::invokeMethod(this, [this, userIds] {
         QMutexLocker lock(&m_presenceRequestMutex);
         m_presenceRequestIds.append(userIds);
         m_presenceRequestTimer.start(1000);
-    }, Qt::QueuedConnection);
+    //}, Qt::QueuedConnection);
 }
 
 //void SlackTeamClient::requestGroupsInfo(const QString &channelId)
@@ -1740,9 +1740,9 @@ void SlackTeamClient::handleConversationsListReply()
             chat->moveToThread(qApp->thread());
             _chats.append(chat);
             //in GUI thread
-            QMetaObject::invokeMethod(qApp, [this, chat, chatValue] {
+            //QMetaObject::invokeMethod(qApp, [this, chat, chatValue] {
                 chat->setData(chatValue.toObject());
-            });
+            //});
         }
 #if 0
         {
@@ -1869,10 +1869,10 @@ void SlackTeamClient::handleChannelsInfoReply()
         chat->unreadCountDisplay = chatVal.toObject().value(QStringLiteral("unread_count_display")).toInt(0);
         chat->unreadCount = chatVal.toObject().value(QStringLiteral("unread_count")).toInt(0);
         //in GUI thread
-        QMetaObject::invokeMethod(qApp, [this, chat, chatVal] {
+        //QMetaObject::invokeMethod(qApp, [this, chat, chatVal] {
             chat->setLastReadData(chatVal.toObject().value(QStringLiteral("last_read")).toString());
             emit channelUpdated(chat);
-        });
+        //});
     }
 }
 
@@ -1912,9 +1912,9 @@ void SlackTeamClient::handleConversationInfoReply()
         }
 
         //in GUI thread
-        QMetaObject::invokeMethod(qApp, [this, chat, chatVal] {
+        //QMetaObject::invokeMethod(qApp, [this, chat, chatVal] {
             chat->setData(chatVal.toObject());
-        });
+        //});
 
         emit channelUpdated(chat);
     }
@@ -1936,10 +1936,10 @@ void SlackTeamClient::handleDnDInfoReply()
                 int snoole_endtime = data.value("snooze_endtime").toInt(0);
                 QDateTime snoozeEnd = QDateTime::fromSecsSinceEpoch(snoole_endtime);
                 //in GUI thread
-                QMetaObject::invokeMethod(qApp, [this, snoozeEnd] {
+                //QMetaObject::invokeMethod(qApp, [this, snoozeEnd] {
                     m_teamInfo.selfUser()->setPresence(SlackUser::Dnd, true);
                     m_teamInfo.selfUser()->setSnoozeEnds(snoozeEnd);
-                });
+                //});
             }
         }
     }
@@ -1954,7 +1954,7 @@ void SlackTeamClient::handleUsersInfoReply()
     // invoke on the main thread but dnd info must be requested from this thread
     // after user gets updated
     if (!isError(data)) {
-        QMetaObject::invokeMethod(qApp, [this, data] {
+        //QMetaObject::invokeMethod(qApp, [this, data] {
             if (m_teamInfo.users() != nullptr) {
                 const QJsonObject& userObj = data.value(QStringLiteral("user")).toObject();
                 QPointer<SlackUser> _user = m_teamInfo.users()->updateUser(userObj);
@@ -1963,14 +1963,14 @@ void SlackTeamClient::handleUsersInfoReply()
                     if (_user->presence() == SlackUser::Unknown) {
                         requestPresence(userId);
                     }
-                    QMetaObject::invokeMethod(this, [this, userId] {
+                    //QMetaObject::invokeMethod(this, [this, userId] {
                         if (m_teamInfo.selfUser() != nullptr && m_teamInfo.selfUser()->userId() == userId) {
                             requestDnDInfo(m_teamInfo.selfId());
                         }
-                    }, Qt::QueuedConnection);
+                    //}, Qt::QueuedConnection);
                 }
             }
-        }, Qt::QueuedConnection);
+        //}, Qt::QueuedConnection);
     }
 }
 
@@ -1989,10 +1989,10 @@ void SlackTeamClient::createChannelIfNeeded(const QJsonObject &channel)
         _chat->moveToThread(qApp->thread());
         QQmlEngine::setObjectOwnership(_chat, QQmlEngine::CppOwnership);
         // invoke on the main thread
-        QMetaObject::invokeMethod(qApp, [_chatsModel, _chat, channel] {
+        //QMetaObject::invokeMethod(qApp, [_chatsModel, _chat, channel] {
             _chat->setData(channel);
             _chatsModel->addChat(_chat);
-        });
+        //});
     }
 
 }

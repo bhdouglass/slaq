@@ -1379,11 +1379,11 @@ void SlackClientThreadSpawner::run()
 
     //updating teams model
     //make sure it runs in GUI thread
-    QMetaObject::invokeMethod(qApp, [this] {
+    //QMetaObject::invokeMethod(qApp, [this] {
         for (SlackTeamClient* _slackClient : m_knownTeams.values()) {
             m_teamsModel.append(_slackClient->teamInfo());
         }
-    });
+    //});
 
     // Start QT event loop for this thread
     this->exec();

@@ -1,5 +1,5 @@
-import QtQuick 2.11
-import QtQuick.Controls 2.4
+import QtQuick 2.7
+import QtQuick.Controls 2.2
 import QtQuick.Layouts 1.3
 import SortFilterProxyModel 0.2
 import com.iskrembilen 1.0
@@ -88,8 +88,8 @@ ColumnLayout {
             enabled: visible
             height: visible ? delegate.implicitHeight : 0
             spacing: Theme.paddingSmall
-            icon.color: "transparent"
-            icon.source: model.PresenceIcon
+            //icon.color: "transparent"
+            //icon.source: model.PresenceIcon
             width: listView.width
 
             onClicked: {

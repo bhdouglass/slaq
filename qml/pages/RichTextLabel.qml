@@ -1,6 +1,6 @@
 import QtQuick 2.8
 import ".."
-import QtQuick.Controls 2.3
+import QtQuick.Controls 2.2
 
 Label {
     property string value: ""

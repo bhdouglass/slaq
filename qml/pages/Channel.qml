@@ -1,6 +1,6 @@
-import QtQuick 2.11
-import QtQuick.Controls 2.12
-import QtQuick.Layouts 1.12
+import QtQuick 2.7
+import QtQuick.Controls 2.2
+import QtQuick.Layouts 1.3
 import com.iskrembilen 1.0
 import SlackComponents 1.0
 
@@ -167,7 +167,7 @@ Page {
             messageInput: input
             interactive: false
             boundsBehavior: Flickable.StopAtBounds
-            boundsMovement: Flickable.StopAtBounds
+            //boundsMovement: Flickable.StopAtBounds
 
             onLoadCompleted: {
                 loaderIndicator.visible = false

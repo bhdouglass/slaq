@@ -1,9 +1,9 @@
-import QtQuick 2.11
-import QtQuick.Controls 2.4
+import QtQuick 2.7
+import QtQuick.Controls 2.2
 import QtQuick.Layouts 1.3
 import QtQuick.Window 2.3
-import QtQuick.Controls.Material 2.4
-import QtQuick.Controls.Universal 2.4
+import QtQuick.Controls.Material 2.2
+import QtQuick.Controls.Universal 2.2
 
 import Qt.labs.settings 1.0
 import Qt.labs.platform 1.0 as Platform
@@ -52,6 +52,7 @@ ApplicationWindow {
         window.totalUnreadIMMessages = totalIm
     }
 
+    /*
     Action {
         shortcut: "Ctrl+D"
         onTriggered: {
@@ -59,6 +60,7 @@ ApplicationWindow {
             SlackClient.dumpChannel(teamsSwipe.currentItem.item.teamId, teamsSwipe.currentItem.item.currentChannelId);
         }
     }
+    */
 
     Material.theme: settings.theme
     Universal.theme: settings.theme

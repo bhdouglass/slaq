@@ -1,5 +1,5 @@
-import QtQuick 2.11
-import QtQuick.Controls 2.4
+import QtQuick 2.7
+import QtQuick.Controls 2.2
 import QtQuick.Layouts 1.3
 import ".."
 import "../components"
@@ -31,6 +31,7 @@ Page {
 
     Menu {
         id: userMenu
+        /*
         Action {
             text: qsTr("Photo/Status")
             onTriggered: {
@@ -39,14 +40,15 @@ Page {
                 userDialog.open()
             }
         }
+        */
         Menu {
             title: qsTr("Presence")
             MenuItem {
                 text: qsTr("Away")
                 checked: selfUser != null && selfUser.presence == User.Away
                 checkable: true
-                icon.source: "qrc:/icons/away-icon.png"
-                icon.color: "transparent"
+                //icon.source: "qrc:/icons/away-icon.png"
+                //icon.color: "transparent"
                 onTriggered: {
                     if (selfUser.presence == User.Dnd) {
                         SlackClient.cancelDnD(teamRoot.teamId)
@@ -58,8 +60,8 @@ Page {
                 text: qsTr("DnD")
                 checkable: true
                 checked: selfUser != null ? selfUser.presence === User.Dnd : false
-                icon.source: "qrc:/icons/dnd-icon.png"
-                icon.color: "transparent"
+                //icon.source: "qrc:/icons/dnd-icon.png"
+                //icon.color: "transparent"
                 onTriggered: {
                     dndDialog.user = selfUser
                     dndDialog.teamId = teamRoot.teamId

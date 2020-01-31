@@ -1,7 +1,7 @@
-import QtQuick 2.11
-import QtQuick.Controls 2.11
-import QtMultimedia 5.11
-import QtQuick.Layouts 1.11
+import QtQuick 2.7
+import QtQuick.Controls 2.2
+import QtMultimedia 5.9
+import QtQuick.Layouts 1.3
 import ".."
 import "../components"
 

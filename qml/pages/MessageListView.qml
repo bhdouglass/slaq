@@ -1,6 +1,6 @@
-import QtQuick 2.12
-import QtQuick.Controls 2.12
-import QtQuick.Controls.Material 2.12
+import QtQuick 2.7
+import QtQuick.Controls 2.2
+import QtQuick.Controls.Material 2.2
 import com.iskrembilen 1.0
 import ".."
 import "../components"
@@ -83,7 +83,8 @@ ListView {
 
     ScrollBar.vertical: ScrollBar {
         id: sbar
-        policy: ScrollBar.AlwaysOn; minimumSize: 0.05
+        policy: ScrollBar.AlwaysOn;
+        //minimumSize: 0.05
         anchors.right: parent.right
         //moved to left until https://codereview.qt-project.org/#/c/244603/ is merged
         anchors.rightMargin: 10

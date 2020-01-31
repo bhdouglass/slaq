@@ -108,7 +108,7 @@ void MessageFormatter::replaceLinks(ChatsModel* chatModel, QString &message)
                 displayName = capture.toString();
             }
             if (capture.startsWith("#C")) { //channel link
-                link = QString("slaq://channel/%1").arg(hrefs.at(0).mid(1));
+                link = QString("slaq://channel/%1").arg(hrefs.at(0).mid(1).toString());
                 if (hrefs.size() > 1) {
                     displayName = "#"+hrefs.at(1).toString();
                 }

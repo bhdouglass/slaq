@@ -1,5 +1,5 @@
-import QtQuick 2.11
-import QtQuick.Controls 2.4
+import QtQuick 2.7
+import QtQuick.Controls 2.2
 import ".."
 
 Button {
@@ -11,7 +11,7 @@ Button {
     property alias source: avatarImage.source
 
     id: button
-    display: AbstractButton.IconOnly
+    //display: AbstractButton.IconOnly
     hoverEnabled: true
     background: Item {
         implicitHeight: bgSizeH

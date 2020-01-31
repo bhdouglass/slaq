@@ -5,7 +5,6 @@
 #include <QStringList>
 #include <QtCore/QTimer>
 #include <QEventLoop>
-#include <QScopeGuard>
 
 #include <QMetaEnum>
 
@@ -239,7 +238,8 @@ void YoutubeVideoUrlParser::requestVideoUrl(const QString &videoId)
         while (embedMatches.hasNext()) {
             QRegularExpressionMatch embedMath = embedMatches.next();
 
-            const QString& embedJson = embedMath.captured("Json").chopped(1);
+            QString embedJson = embedMath.captured("Json");
+            embedJson.chop(1);
             QJsonParseError error;
             QJsonDocument document = QJsonDocument::fromJson(embedJson.toLatin1(), &error);
 

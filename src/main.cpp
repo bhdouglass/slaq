@@ -47,15 +47,15 @@ int main(int argc, char *argv[])
 
     QApplication app(argc, argv);
 
-    app.setOrganizationName(QStringLiteral("Martin Sandsmark"));
-    app.setApplicationName(QStringLiteral("Slaq"));
+    app.setOrganizationName(QStringLiteral("slaq.bhdouglass"));
+    app.setApplicationName(QStringLiteral("slaq.bhdouglass"));
     app.setApplicationVersion(QString(SLAQ_VERSION));
 
     QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
     QNetworkProxyFactory::setUseSystemConfiguration(true);
 
     QSettings settings;
-    QQuickStyle::setStyle(settings.value("style", QStringLiteral("Material")).toString());
+    QQuickStyle::setStyle(settings.value("style", QStringLiteral("Suru")).toString());
     settings.setValue("style", QQuickStyle::name());
 
     int emojiFontId = QFontDatabase::addApplicationFont(QStringLiteral(":/fonts/TwitterColorEmoji_df.ttf"));

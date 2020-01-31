@@ -1,6 +1,6 @@
-import QtQuick 2.11
-import QtQuick.Controls 2.4
-import QtQuick.Controls.Material 2.4
+import QtQuick 2.7
+import QtQuick.Controls 2.2
+import QtQuick.Controls.Material 2.2
 
 import ".."
 import "../components"
@@ -98,8 +98,8 @@ ListView {
         enabled: visible
         height: visible ? delegate.implicitHeight : 0
         spacing: Theme.paddingSmall
-        icon.color: "transparent"
-        icon.source: model.PresenceIcon
+        //icon.color: "transparent"
+        //icon.source: model.PresenceIcon
         swipe.enabled: true
         swipe.right: EmojiRoundButton {
             id: leaveLabel

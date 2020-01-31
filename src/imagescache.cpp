@@ -84,10 +84,10 @@ ImagesCache::ImagesCache(QObject *parent) : QObject(parent)
     QSettings settings;
     const QString imagesSet = settings.value(QStringLiteral("emojisSet"), "Unicode").toString();
     m_cacheSlackImages = settings.value(QStringLiteral("cacheSlackImages"),true).toBool();
-    QThread *thread = QThread::create([&]{
+    //QThread *thread = QThread::create([&]{
         parseSlackJson();
-    });
-    thread->start();
+    //});
+    //thread->start();
     setEmojiImagesSet(imagesSet);
     QDir emojisCacheDir(m_cache + QDir::separator() + m_imagesSetsFolders.at(m_currentImagesSetIndex));
     if (!emojisCacheDir.exists()) {
@@ -467,7 +467,7 @@ void ImagesCache::onImageRequestFinished()
 
 void ImagesCache::checkImagesPresence()
 {
-    QThread *thread = QThread::create([&]{
+    //QThread *thread = QThread::create([&]{
         QDir iconsCacheDir(m_cache + QDir::separator() + slackImagesSubdir);
         if (!iconsCacheDir.exists()) {
             iconsCacheDir.mkpath(iconsCacheDir.path());
@@ -508,8 +508,8 @@ void ImagesCache::checkImagesPresence()
                 }
             }
         }
-    });
-    thread->start();
+    //});
+    //thread->start();
 }
 
 void ImagesCache::addEmojiAlias(const QString& emojiName, const QString& emojiAlias) {
@@ -574,7 +574,7 @@ void ImagesCache::addLastUsedEmoji(const QString &teamId, const QString &emojiNa
 
 void ImagesCache::setLastUsedEmojisList(const QString &teamId, const QStringList& emojis)
 {
-    QMetaObject::invokeMethod(qApp, [this, teamId, emojis] {
+    //QMetaObject::invokeMethod(qApp, [this, teamId, emojis] {
         QQmlObjectListModel<EmojiInfo>* _list = m_lastUsedEmojisModels.value(teamId);
         if (_list == nullptr) {
             _list = new QQmlObjectListModel<EmojiInfo>(this);
@@ -587,7 +587,7 @@ void ImagesCache::setLastUsedEmojisList(const QString &teamId, const QStringList
                 _list->append(ei);
             }
         }
-    }, Qt::QueuedConnection);
+    //}, Qt::QueuedConnection);
 }
 
 QStringList ImagesCache::getLastUsedEmojisList(const QString &teamId)
